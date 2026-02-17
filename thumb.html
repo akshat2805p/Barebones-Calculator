@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barebones's Calculator</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Jolly Chicken Switch -->
+        <label class="switch" id="theme-toggle-wrapper">
+            <input type="checkbox" id="theme-toggle" checked>
+            <span class="slider round">
+                <div class="sun-moon">
+                    <div id="moon-dot-1" class="moon-dot"></div>
+                    <div id="moon-dot-2" class="moon-dot"></div>
+                    <div id="moon-dot-3" class="moon-dot"></div>
+                </div>
+                <div class="stars">
+                    <div id="star-1" class="star"></div>
+                    <div id="star-2" class="star"></div>
+                    <div id="star-3" class="star"></div>
+                    <div id="star-4" class="star"></div>
+                </div>
+                <div class="clouds">
+                    <div id="cloud-1" class="cloud-light"></div>
+                    <div id="cloud-2" class="cloud-light"></div>
+                    <div id="cloud-3" class="cloud-light"></div>
+                    <div id="cloud-4" class="cloud-dark"></div>
+                    <div id="cloud-5" class="cloud-dark"></div>
+                    <div id="cloud-6" class="cloud-dark"></div>
+                </div>
+            </span>
+        </label>
+
+        <div class="calculator-frame">
+            <div class="phone-header">
+                <span class="time">20:10</span>
+                <span class="notch"></span>
+                <div class="status-icons">
+                    <span>🔋</span>
+                    <span>📶</span>
+                </div>
+            </div>
+
+            <!-- View: Calculator -->
+            <div id="view-calculator" class="view active-view">
+                <div class="display"></div>
+                <div class="buttons">
+                    <!-- Row 1 -->
+                    <button id="ac" class="btn btn-action" value="AC">AC</button>
+                    <button class="btn btn-op operator" value="(">(</button>
+                    <button class="btn btn-op operator" value=")">)</button>
+                    <button class="btn btn-op operator" value="/">÷</button>
+
+                    <!-- Row 2 -->
+                    <button class="btn btn-num numbers" value="7">7</button>
+                    <button class="btn btn-num numbers" value="8">8</button>
+                    <button class="btn btn-num numbers" value="9">9</button>
+                    <button class="btn btn-op operator" value="x">×</button>
+
+                    <!-- Row 3 -->
+                    <button class="btn btn-num numbers" value="4">4</button>
+                    <button class="btn btn-num numbers" value="5">5</button>
+                    <button class="btn btn-num numbers" value="6">6</button>
+                    <button id="subtract" class="btn btn-op operator" value="-">-</button>
+
+                    <!-- Row 4 -->
+                    <button class="btn btn-num numbers" value="1">1</button>
+                    <button class="btn btn-num numbers" value="2">2</button>
+                    <button class="btn btn-num numbers" value="3">3</button>
+                    <button class="btn btn-op operator" value="+">+</button>
+
+                    <!-- Row 5 -->
+                    <button class="btn btn-num numbers" value="0">0</button>
+                    <button class="btn btn-num numbers" value=".">.</button>
+                    <button id="de" class="btn btn-action" value="DE">⌫</button>
+                    <button id="equal" class="btn btn-equal" value="=">=</button>
+                </div>
+            </div>
+
+            <!-- View: Converter -->
+            <div id="view-converter" class="view hidden-view">
+                <div class="converter-header">
+                    <button class="icon-btn"><i class="fas fa-chevron-left"></i></button>
+                    <span>Convert</span>
+                    <button class="icon-btn"><i class="fas fa-grip-dots"></i></button>
+                </div>
+
+                <div class="conversion-cards">
+                    <!-- Source Card (Dark) -->
+                    <div class="card card-source">
+                        <div class="currency-selector">
+                            <span class="currency-icon" id="source-symbol"></span>
+                            <select class="currency-code" id="source-currency"></select>
+                        </div>
+                        <div class="amount-display">
+                            <span class="label">From</span>
+                            <span class="value" id="source-amount">0</span>
+                        </div>
+                    </div>
+
+                    <!-- Swap Button -->
+                    <button id="swap-currency" class="swap-btn">
+                        <i class="fas fa-arrow-right-arrow-left"></i>
+                    </button>
+
+                    <!-- Target Card (Orange) -->
+                    <div class="card card-target">
+                        <div class="currency-selector">
+                            <span class="currency-icon" id="target-symbol"></span>
+                            <select class="currency-code" id="target-currency"></select>
+                        </div>
+                        <div class="amount-display">
+                            <span class="label">To</span>
+                            <span class="value" id="target-amount">0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="buttons converter-buttons">
+                    <!-- Simplified Keypad -->
+                    <button class="btn btn-num conv-btn" value="7">7</button>
+                    <button class="btn btn-num conv-btn" value="8">8</button>
+                    <button class="btn btn-num conv-btn" value="9">9</button>
+                    <button class="btn btn-action conv-action" id="conv-ac">C</button>
+
+                    <button class="btn btn-num conv-btn" value="4">4</button>
+                    <button class="btn btn-num conv-btn" value="5">5</button>
+                    <button class="btn btn-num conv-btn" value="6">6</button>
+                    <button class="btn btn-action conv-btn" value="-"> </button> <!-- Placeholder/Minus? -->
+
+                    <button class="btn btn-num conv-btn" value="1">1</button>
+                    <button class="btn btn-num conv-btn" value="2">2</button>
+                    <button class="btn btn-num conv-btn" value="3">3</button>
+                    <button class="btn btn-action conv-btn" value="+"> </button>
+
+                    <button class="btn btn-num conv-btn" value="0">0</button>
+                    <button class="btn btn-num conv-btn" value=".">.</button>
+
+                    <!-- Confirm/Action button (Orange square in image) -->
+                    <button class="btn btn-equal conv-equal" id="conv-enter">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- View: History -->
+            <div id="view-history" class="view hidden-view">
+                <div class="history-header">
+                    <span>History</span>
+                    <button class="icon-btn" id="clear-history"><i class="fas fa-trash-can"></i></button>
+                </div>
+                <div class="history-list" id="history-list">
+                    <!-- History Items will be injected here -->
+                    <div class="empty-state">No history yet</div>
+                </div>
+            </div>
+
+            <!-- Bottom Navigation -->
+            <div class="bottom-nav">
+                <button class="nav-item active" data-target="view-calculator">
+                    <i class="fas fa-calculator"></i>
+                </button>
+                <button class="nav-item" data-target="view-converter">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+                <button class="nav-item" data-target="view-history">
+                    <i class="fas fa-history"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="end.js"></script>
+</body>
+
+</html>
