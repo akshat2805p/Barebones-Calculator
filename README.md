@@ -42,7 +42,7 @@ A custom-built, purely CSS animated switch that brings the UI to life:
 
 This project consists of three core files that separation of concerns:
 
-### 1. `thumb.html` (The Skeleton)
+### 1. `index.html` (The Skeleton)
 - **Structure**: Acts as the main container (`.app-container`).
 - **Views**: Defines three distinct sections within `.calculator-frame`:
     - `#view-calculator`: The main keypad and display.
@@ -78,7 +78,7 @@ No build tools or heavy framework installations required!
     git clone https://github.com/yourusername/barebones-calculator.git
     ```
 2.  **Run the App**
-    - Simply double-click `thumb.html` to open it in Chrome, Firefox, Safari, or Edge.
+    - Simply double-click `index.html` to open it in Chrome, Firefox, Safari, or Edge.
     - **Pro Tip**: Use the VS Code "Live Server" extension for the best experience.
 
 ---
